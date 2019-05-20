@@ -1,0 +1,22 @@
+<mat-form-field class="ingredient-input">
+    <input type="text" matInput placeholder="Name" [(ngModel)]="salad.name" name="name" required>
+</mat-form-field>
+
+<mat-form-field class="ingredient-input">
+    <input type="text" matInput placeholder="Tag" [(ngModel)]="salad.name" name="name" required>
+</mat-form-field>
+
+<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let ingredient of salad.ingredients">
+        <div class="content" fxLayout="row" fxLayoutAlign="space-between center">
+            <p>{{ ingredient.name }}</p>
+            <p>{{ ingredient.calories }}</p>
+        </div>
+    </mat-list-item>
+</mat-list>
+{{ salad.calories}}
+<button
+        mat-raised-button
+        (click)="addSalad()"
+        type="submit"
+        class="add-button" [disabled]="invalidForm()">Add Salad</button>

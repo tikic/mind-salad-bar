@@ -1,0 +1,28 @@
+<!-- Sort options -->
+<mat-form-field>
+    <mat-label>Sort By:</mat-label>
+    <mat-select>
+        <mat-option value="calories" (click)="sortBy('calories')">Calories</mat-option>
+        <mat-option value="name" (click)="sortBy('name')">Name</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<!-- Salads List -->
+
+<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let salad of salads| sort: sortOption">
+        <div class="content" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="info" fxLayout="column">
+                <div fxLayout="row">
+                    <a [routerLink]="['/ingredient', salad.id]">{{ salad.name }}</a>
+                    <span class="mr-left">Calories: {{ salad.calories }}</span>
+                </div>
+                <div class="ingredient-list" fxLayout="row">
+                    <a *ngFor="let ingredient of salad.ingredients" [routerLink]="['/ingredient', ingredient.id]">
+                       {{ ingredient.name }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </mat-list-item>
+</mat-list>

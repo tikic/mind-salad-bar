@@ -1,0 +1,36 @@
+<div class="ingredients-list">
+
+    <div class="content">
+
+        <!-- Filters -->
+        <div class="filter-fields" fxLayout="row" fxLayoutAlign="space-between">
+
+            <!-- Sort options -->
+            <mat-form-field>
+                <mat-label>Sort By:</mat-label>
+                <mat-select>
+                    <mat-option value="calories" (click)="sortBy('calories')">Calories</mat-option>
+                    <mat-option value="name" (click)="sortBy('name')">Name</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!-- List of ingredients -->
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                   *ngFor="let ingredient of ingredients| sort: sortOption">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <img [src]="ingredient.imagePath ? ingredient.imagePath : '../../../assets/images/no_image.jpg'"
+                         class="md-avatar" alt="img"/>
+                    <p>{{ ingredient.name }} calories({{ ingredient.calories }})</p>
+                    <p *ngFor="let tag of ingredient.tags" (click)="filterTag(tag.name)">{{ tag.name }}</p>
+                    <a [routerLink]="['/ingredient', ingredient.id]">
+                        <mat-icon style="font-size:24px;">edit</mat-icon>
+                    </a>
+                </div>
+            </mat-list-item>
+        </mat-list>
+        <p>Selected tag: {{selectedTag}} <button (click)="remove()">x</button></p>
+        <button (click)="makeSalad()">Make Salad</button>
+    </div>
+</div>

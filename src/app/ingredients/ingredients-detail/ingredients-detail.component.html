@@ -1,0 +1,54 @@
+<div class="add-ingredient" fxLayout="row">
+
+    <img [src]="ingredient.imagePath" class="images"/>
+
+    <div fxLayout="column" fxLayoutAlign="space-around">
+        <form class="add-ingredient-form">
+
+            <div class="first-row" fxLayout="row">
+                <mat-form-field class="ingredient-input">
+                    <input type="text" matInput placeholder="Name" [(ngModel)]="ingredient.name" name="name" required>
+                </mat-form-field>
+
+                <mat-form-field class="ingredient-input">
+                    <input type="number" matInput placeholder="Calories" [(ngModel)]="ingredient.calories"
+                           name="calories" required>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="ingredient-input">
+                <input type="url" matInput placeholder="Image URL" [(ngModel)]="ingredient.imagePath" name="imagePath">
+            </mat-form-field>
+
+            <mat-form-field class="ingredient-tags">
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let tag of ingredient.tags" [selectable]="selectable"
+                              [removable]="removable" (removed)="removeTag(tag)">
+                        {{tag.name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Add tags..."
+                           [matChipInputFor]="chipList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTag($event)" required>
+                </mat-chip-list>
+            </mat-form-field>
+        </form>
+
+
+        <div class="fotter" fxLayout="row" fxLayoutAlign="space-between center">
+            <button
+                    mat-raised-button
+                    (click)="deleteIngredientData()"
+                    type="submit"
+                    class="add-button">Delete Ingredient</button>
+            <button
+                    mat-raised-button
+                    (click)="changeIngredientData()"
+                    type="submit"
+                    class="add-button" [disabled]="invalidForm()">Update Ingredient</button>
+        </div>
+
+    </div>
+</div>
