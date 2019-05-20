@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Salad} from '../salad.model';
 import {SaladsService} from '../salads.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-salad-item',
@@ -14,12 +15,10 @@ export class SaladItemComponent implements OnInit {
     // Salad Data
     salad: Salad = {};
 
-    // Calories counter
-    caloriesCounter = 0;
-
     // ***** Lifecycle ***** //
 
-    constructor(private saladService: SaladsService) {
+    constructor(private saladService: SaladsService,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -39,15 +38,13 @@ export class SaladItemComponent implements OnInit {
     }
 
     invalidForm(): boolean {
-        return !this.salad.name;
+        return !this.salad.name ||
+                !this.salad.tag;
     }
 
-    // formReset() {
-    //     this.salad = {};
-    // }
 
     addSalad() {
-        this.saladService.addSalad(this.salad).subscribe();
+        this.saladService.addSalad(this.salad).subscribe(() =>  this.router.navigate(['salad/all']));
     }
 
 }

@@ -1,22 +1,66 @@
-<mat-form-field class="ingredient-input">
-    <input type="text" matInput placeholder="Name" [(ngModel)]="salad.name" name="name" required>
-</mat-form-field>
+<div class="add-salad" fxLayout="row">
 
-<mat-form-field class="ingredient-input">
-    <input type="text" matInput placeholder="Tag" [(ngModel)]="salad.name" name="name" required>
-</mat-form-field>
+    <div class="left-content" fxLayout="column" fxFlex="40%">
+        <h3 class="title">Add New salad</h3>
 
-<mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let ingredient of salad.ingredients">
-        <div class="content" fxLayout="row" fxLayoutAlign="space-between center">
-            <p>{{ ingredient.name }}</p>
-            <p>{{ ingredient.calories }}</p>
+        <form>
+            <mat-form-field class="input-field">
+                <input type="text" matInput placeholder="Name" [(ngModel)]="salad.name" name="name" required>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+                <input type="text" matInput placeholder="Tag" [(ngModel)]="salad.tag" name="tag" required>
+            </mat-form-field>
+        </form>
+
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span>Total number of calories: {{ salad.calories}}</span>
+
+            <button
+                    mat-raised-button
+                    (click)="addSalad()"
+                    type="submit"
+                    class="add-button" [disabled]="invalidForm()">Add Salad
+            </button>
         </div>
-    </mat-list-item>
-</mat-list>
-{{ salad.calories}}
-<button
-        mat-raised-button
-        (click)="addSalad()"
-        type="submit"
-        class="add-button" [disabled]="invalidForm()">Add Salad</button>
+    </div>
+
+    <div class="right-content" fxLayout="column" fxFlex="60%">
+
+        <div class="filters" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <mat-form-field class="example-full-width">
+                <input matInput type="search" [(ngModel)]="searchText" placeholder="Search by name" class="search-box">
+            </mat-form-field>
+
+            <!-- Filter by calories -->
+            <div class="filter-field" fxLayout="row" fxLayoutAlign="flex-end center">
+                <span>Sort By Calories </span>
+                <button mat-mini-fab (click)="ascSort = !ascSort" class="sort-icon">
+                    <mat-icon aria-label="Example icon-button with a heart icon">import_export</mat-icon>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- List of ingredients -->
+        <mat-list role="list">
+            <mat-list-item role="listitem" class="list-item"
+                           *ngFor="let ingredient of salad.ingredients| searchData: {name: searchText} | sort: 'calories': ascSort" fxLayout="row">
+
+                <!-- Image badge -->
+                <img [src]="ingredient.imagePath ? ingredient.imagePath : '../../../assets/images/no_image.jpg'"
+                     class="md-avatar" alt="img"/>
+
+                <!-- Name and calories -->
+                <div fxLayout="row" fxLayoutAlign="space-between start">
+                    <span class="primary-text">{{ ingredient.name }} ({{ ingredient.calories }})</span>
+                    <span class="tags" *ngFor="let tag of ingredient.tags" (click)="filterTag(tag.name)" fxLayout> {{ tag.name }} </span>
+                </div>
+            </mat-list-item>
+
+        </mat-list>
+
+    </div>
+</div>

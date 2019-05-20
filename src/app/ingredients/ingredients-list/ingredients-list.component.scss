@@ -1,0 +1,49 @@
+@import '../../../stylesheets/variables';
+
+:host{
+  .list-item{
+    padding: 50px 20px;
+    width:100%;
+  }
+  .header{
+    padding: 10px 40px;
+    .title{
+      font-size: 22px;
+  }
+    .filter-field{
+      margin-left: auto;
+    }
+    .filter-text{
+      margin-right: 15px;
+    }
+  }
+
+  .md-avatar{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    padding: 20px;
+  }
+  .edit-icon{
+    margin-left: auto;
+    cursor: pointer;
+
+  }
+  .sort-icon{
+    margin: 10px;
+    background-color: #e0e0e0;
+    box-shadow: none;
+  }
+  .secondary-text{
+    font-size: 13px;
+    color: $mind-secondary-text;
+  }
+  .primary-text{
+    color: $mind-primary-text;
+  }
+  .tags{
+    cursor:pointer;
+    margin: 2px 5px;
+    text-decoration: underline dotted gray;
+  }
+}

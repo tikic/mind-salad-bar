@@ -16,7 +16,7 @@ export class IngredientsListComponent implements OnInit {
     ingredients: Ingredient[];
 
     // Sort
-    sortOption: string;
+    ascSort: boolean;
 
     sortData: any;
 
@@ -37,21 +37,19 @@ export class IngredientsListComponent implements OnInit {
         });
     }
 
-    sortBy(option: string) {
-        this.sortOption = option;
-    }
     remove() {
-        this.ingredients = this.sortDate;
+        this.ingredients = this.sortData;
+        this.selectedTag = '';
     }
 
     filterTag(name) {
         this.selectedTag = name;
-        const sortData = this.sortDate.filter((element) => element.tags.some((subElement) => subElement.name === name));
+        const sortData = this.sortData.filter((element) => element.tags.some((subElement) => subElement.name === name));
         this.ingredients = sortData;
     }
 
     makeSalad() {
         this.saladService.storeIngredients(this.ingredients);
-        this.router.navigate(['salads']);
+        this.router.navigate(['salad']);
     }
 }

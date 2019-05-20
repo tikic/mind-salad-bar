@@ -1,24 +1,25 @@
-<div class="add-ingredient" fxLayout="row">
-    <div fxLayout="column" fxLayoutAlign="space-around">
+<div class="add-ingredient" fxLayout="column" fxLayoutAlign="space-around">
+
+    <div class="left-section">
+    <h3 class="title">Add New Ingredient</h3>
 
         <form class="add-ingredient-form">
-
-            <div class="first-row" fxLayout="row">
-                <mat-form-field class="ingredient-input">
+            <div class="first-row" fxLayout class="input-field">
+                <mat-form-field class="name-field">
                     <input type="text" matInput placeholder="Name" [(ngModel)]="ingredient.name" name="name" required>
                 </mat-form-field>
 
-                <mat-form-field class="ingredient-input">
+                <mat-form-field class="cal-field">
                     <input type="number" matInput placeholder="Calories" [(ngModel)]="ingredient.calories"
                            name="calories" required>
                 </mat-form-field>
             </div>
 
-            <mat-form-field class="ingredient-input">
+            <mat-form-field class="input-field">
                 <input type="url" matInput placeholder="Image URL" [(ngModel)]="ingredient.imagePath" name="imagePath">
             </mat-form-field>
 
-            <mat-form-field class="ingredient-tags">
+            <mat-form-field class="input-field">
                 <mat-chip-list #chipList>
                     <mat-chip *ngFor="let tag of ingredient.tags" [selectable]="selectable"
                               [removable]="removable" (removed)="removeTag(tag)">
@@ -40,9 +41,12 @@
             <button
                     mat-raised-button
                     (click)="addIngredient()"
+                    [disabled]="invalidForm()"
                     type="submit"
                     class="add-button" [disabled]="invalidForm()">Add Ingredient</button>
         </div>
+    </div>
+    <div class="right-section">
 
     </div>
 </div>

@@ -1,5 +1,10 @@
+<mat-toolbar>
+    <span class="logo">Mind Salad Bar</span>
+    <span class="dev-info">Task - Holycode</span>
+</mat-toolbar>
+
 <div class="main-content" fxLayout="row">
-    <div class="nav" fxLayout="column">
+    <div class="nav" fxLayout="row">
         <ul class="nav-items">
             <li><a class="nav-item" routerLink="/ingredient" routerLinkActive="active">
                 Add ingredient</a></li>
@@ -8,7 +13,7 @@
             <li><a class="nav-item" routerLink="/salad/all" routerLinkActive="active">Salads Preview</a></li>
         </ul>
     </div>
-    <mat-card class="main-section container">
+    <mat-card class="card">
         <router-outlet></router-outlet>
     </mat-card>
 </div>

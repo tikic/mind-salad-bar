@@ -1,0 +1,16 @@
+@import '/../stylesheets/variables';
+
+:host {
+  .logo{
+    font-size: 30px;
+    text-transform: uppercase;
+    color: $mind-primary-color;
+  }
+  .dev-info{
+    margin-left: auto;
+  }
+  .card{
+    width: 1024px;
+    margin:auto;
+  }
+}

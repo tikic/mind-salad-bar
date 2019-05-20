@@ -61,7 +61,9 @@ export class IngredientsItemComponent implements OnInit {
     }
 
     invalidForm(): boolean {
-        return !this.ingredient.name;
+        return !this.ingredient.name ||
+            !this.ingredient.calories ||
+            !this.ingredient.tags.length > 0;
     }
 
     reset() {

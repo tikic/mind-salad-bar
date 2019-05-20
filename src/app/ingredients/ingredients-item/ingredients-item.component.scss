@@ -1,0 +1,24 @@
+:host{
+  .title{
+    font-size: 50px;
+    color: black;
+  }
+  .left-section{
+    width: 500px;
+
+    .input-fields {
+      width: 100%;
+      padding: 20px;
+    }
+    .name-field{
+      width: 60%;
+    }
+    .cal-field{
+      width: 30%;
+      margin-left: auto;
+    }
+    .input-field{
+      width: 100%;
+    }
+  }
+}

@@ -20,7 +20,8 @@ import { SearchPipe } from '../../utils/pipes/search.pipe';
   exports: [
       SearchPipe,
       SortPipe,
-      MaterialModule
+      MaterialModule,
+      FlexLayoutModule
   ]
 })
 export class SharedModule { }
