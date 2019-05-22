@@ -1,24 +1,34 @@
-<!-- Sort options -->
-<mat-form-field>
-    <mat-label>Sort By:</mat-label>
-    <mat-select>
-        <mat-option value="calories" (click)="sortBy('calories')">Calories</mat-option>
-        <mat-option value="name" (click)="sortBy('name')">Name</mat-option>
-    </mat-select>
-</mat-form-field>
+<div class="salads">
 
-<!-- Salads List -->
+    <!-- Sort options -->
+    <mat-form-field class="sort">
+        <mat-label>Sort By:</mat-label>
+        <mat-select>
+            <mat-option value="calories" (click)="sortBy('calories')">Calories</mat-option>
+            <mat-option value="name" (click)="sortBy('name')">Name</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-<div class="salad-list" fxLayout="row wrap" fxLayoutAlign="space-between center">
-    <mat-card class="salad-card" *ngFor="let salad of salads| sort: sortOption">
-        <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
-            <h3>{{ salad.name }}</h3>
-            <span>{{salad.calories}}</span>
-        </mat-card-header>
-        <mat-card-content>
-                <ul *ngFor="let ingredient of salad.ingredients" [routerLink]="['/ingredient', ingredient.id]">
-                    <li> {{ ingredient.name }}</li>
-                </ul>
-        </mat-card-content>
-    </mat-card>
+    <!-- Salads List -->
+
+    <div class="salad-list" fxLayout="row wrap" fxLayoutAlign="flex-start center">
+        <mat-card class="salad-card" *ngFor="let salad of salads | sort: sortOption: ascSort; index as i"
+                  fxLayout="column" fxLayoutAlign="space-between">
+
+
+            <mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+                <h3>{{ salad.name }}</h3>
+                <span class="badge">{{salad.calories}}</span>
+            </mat-card-header>
+            <mat-card-content class="card-content">
+                <span>Number of ingredients: {{salad.ingredients.length}}</span>
+            </mat-card-content>
+            <mat-card-actions xLayout="row" fxLayoutAlign="space-between center" class="card-actions">
+                <mat-icon class="delete" (click)="removeSalad(salad.id, i)">delete_outline</mat-icon>
+                <button mat-button [routerLink]="['/salad', salad.id]">Details</button>
+            </mat-card-actions>
+
+
+        </mat-card>
+    </div>
 </div>

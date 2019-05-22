@@ -1,8 +1,12 @@
 <div class="add-salad" fxLayout="row">
 
-    <div class="left-content" fxLayout="column" fxFlex="40%">
-        <h3 class="title">Add New salad</h3>
+    <div class="left-section" fxLayout="column" fxFlex="40%">
 
+        <!-- Step Info -->
+        <img src="../../../assets/images/salad-step-3.png" alt="">
+        <h3 class="title">Add New Salad</h3>
+
+        <!-- Input fields -->
         <form>
             <mat-form-field class="input-field">
                 <input type="text" matInput placeholder="Name" [(ngModel)]="salad.name" name="name" required>
@@ -13,7 +17,7 @@
             </mat-form-field>
         </form>
 
-
+        <!-- Actions -->
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <span>Total number of calories: {{ salad.calories}}</span>
 
@@ -26,10 +30,12 @@
         </div>
     </div>
 
-    <div class="right-content" fxLayout="column" fxFlex="60%">
+    <div class="right-section" fxLayout="column" fxFlex="60%">
 
+        <!-- Filters -->
         <div class="filters" fxLayout="row" fxLayoutAlign="space-between center">
 
+            <!-- Search -->
             <mat-form-field class="example-full-width">
                 <input matInput type="search" [(ngModel)]="searchText" placeholder="Search by name" class="search-box">
             </mat-form-field>
@@ -47,20 +53,27 @@
         <!-- List of ingredients -->
         <mat-list role="list">
             <mat-list-item role="listitem" class="list-item"
-                           *ngFor="let ingredient of salad.ingredients| searchData: {name: searchText} | sort: 'calories': ascSort" fxLayout="row">
+                           *ngFor="let ingredient of salad.ingredients| searchData: {name: searchText} | sort: 'calories': ascSort" fxLayout="column"
+                           fxLayoutAlign="space-between">
+
+                <!-- Checkbox -->
+                <mat-checkbox [(ngModel)]="ingredient.checked" (change)="addTolist(ingredient, $event)"></mat-checkbox>
 
                 <!-- Image badge -->
                 <img [src]="ingredient.imagePath ? ingredient.imagePath : '../../../assets/images/no_image.jpg'"
                      class="md-avatar" alt="img"/>
 
                 <!-- Name and calories -->
-                <div fxLayout="row" fxLayoutAlign="space-between start">
-                    <span class="primary-text">{{ ingredient.name }} ({{ ingredient.calories }})</span>
-                    <span class="tags" *ngFor="let tag of ingredient.tags" (click)="filterTag(tag.name)" fxLayout> {{ tag.name }} </span>
+                <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="30%">
+                    <span class="primary-text">{{ ingredient.name }}</span>
+                    <span class="secondary-text"> Tags:
+                        <span *ngFor="let tag of ingredient.tags">{{ tag.name }}</span></span>
                 </div>
+
+                <!-- Calories -->
+                <span class="calories"> {{ ingredient.calories }}</span>
+
             </mat-list-item>
-
         </mat-list>
-
     </div>
 </div>

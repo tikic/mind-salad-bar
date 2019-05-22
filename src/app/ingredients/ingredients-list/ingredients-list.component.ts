@@ -77,7 +77,7 @@ export class IngredientsListComponent implements OnInit {
     }
 
     makeSalad() {
-        this.saladService.storeIngredients(this.ingredientsList);
+        this.saladService.storeCheckedIngredients(this.ingredientsList);
         this.router.navigate(['salad']);
     }
 }
