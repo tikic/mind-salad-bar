@@ -40,7 +40,7 @@
 
                 <!-- Name and calories -->
                 <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="30%">
-                    <span class="primary-text">{{ ingredient.name }}</span>
+                    <span class="primary-text">{{ ingredient.name | truncate:20 }}</span>
                     <span class="secondary-text">Number of Calories({{ ingredient.calories }})</span>
                 </div>
 

@@ -25,7 +25,7 @@
                 <span class="badge">{{salad.calories}}</span>
                 <div class="info" fxLayout="column" fxLayoutAlign="center center">
                     <img src="../../../assets/images/salad.jpg" alt="" class="salad-icon">
-                    <h3>{{ salad.name }}</h3>
+                    <h3>{{ salad.name| truncate:20 }}</h3>
                 </div>
 
             </mat-card-header>

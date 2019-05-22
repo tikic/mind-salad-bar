@@ -18,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
 import {FormsModule} from '@angular/forms';
 import { SaladDetailComponent } from './salads/salad-detail/salad-detail.component';
 import { SaladItemComponent } from './salads/salad-item/salad-item.component';
+import {TruncatePipe} from '../utils/pipes/truncate.pipe';
 
 
 
@@ -32,6 +33,7 @@ import { SaladItemComponent } from './salads/salad-item/salad-item.component';
         SaladListComponent,
         SaladDetailComponent,
         SaladItemComponent,
+        TruncatePipe
     ],
     imports: [
         BrowserModule,
