@@ -9,21 +9,34 @@ const CONNECTIONS_ENDPOINT = `${environment.apiBaseUrl}/salad`;
 @Injectable()
 
 export class SaladsService {
-    chosenIngredient: Ingredient[];
+    ingredientsList: Ingredient[];
+    chosenIngredient: Ingredient[] = [];
     counter = 0;
 
     constructor(private httpClient: HttpClient) {
     }
+
     fetchSaladData(id) {
         return this.httpClient.get<Salad>(`${CONNECTIONS_ENDPOINT}/${id}`);
     }
+
     fetchSalads() {
         return this.httpClient.get<Salad[]>(`${CONNECTIONS_ENDPOINT}`);
     }
+
     addSalad(salad) {
         return this.httpClient.post<Salad>(`${CONNECTIONS_ENDPOINT}`, salad);
     }
+
     storeIngredients(ingredients) {
+        this.ingredientsList = ingredients;
+    }
+
+    storeCheckedIngredients(ingredients) {
         this.chosenIngredient = ingredients;
+    }
+
+    deleteIngredientData(id) {
+        return this.httpClient.delete<Salad>(`${CONNECTIONS_ENDPOINT}/${id}`);
     }
 }

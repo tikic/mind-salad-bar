@@ -16,6 +16,9 @@ export class SaladListComponent implements OnInit {
     // Sort
     sortOption: string;
 
+    // Sort order
+    ascSort = true;
+
     // ***** Lifecycle ***** //
 
     constructor(private saladsService: SaladsService) {
@@ -27,5 +30,9 @@ export class SaladListComponent implements OnInit {
 
     sortBy(option: string) {
         this.sortOption = option;
+    }
+
+    removeSalad(id, index) {
+        this.saladsService.deleteIngredientData(id).subscribe(() => this.salads.splice(index, 1));
     }
 }
