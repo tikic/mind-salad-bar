@@ -1,10 +1,16 @@
-<div class="add-ingredient" fxLayout="column" fxLayoutAlign="space-around">
+<div class="add-ingredient">
 
-    <div class="left-section">
-    <h3 class="title">Add New Ingredient</h3>
+    <div class="main-section" fxLayout="column" fxLayoutAlign="space-around" fxFlex="59%">
 
-        <form class="add-ingredient-form">
-            <div class="first-row" fxLayout class="input-field">
+        <!-- Step Info -->
+        <img src="../../../assets/images/step-1.png" alt="step 1" class="step-img">
+        <h3 class="title">Add New Ingredient</h3>
+
+        <form class="add-ingredient-form" #form="ngForm">
+
+
+            <!-- Name and calories -->
+            <div fxLayout class="input-field">
                 <mat-form-field class="name-field">
                     <input type="text" matInput placeholder="Name" [(ngModel)]="ingredient.name" name="name" required>
                 </mat-form-field>
@@ -15,14 +21,17 @@
                 </mat-form-field>
             </div>
 
+            <!-- Image path -->
             <mat-form-field class="input-field">
                 <input type="url" matInput placeholder="Image URL" [(ngModel)]="ingredient.imagePath" name="imagePath">
             </mat-form-field>
 
+
+            <!-- Tags-->
             <mat-form-field class="input-field">
                 <mat-chip-list #chipList>
-                    <mat-chip *ngFor="let tag of ingredient.tags" [selectable]="selectable"
-                              [removable]="removable" (removed)="removeTag(tag)">
+                    <mat-chip *ngFor="let tag of ingredient.tags" [selectable]="selectable" [removable]="removable"
+                              (removed)="removeTag(tag)">
                         {{tag.name}}
                         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                     </mat-chip>
@@ -35,18 +44,16 @@
             </mat-form-field>
         </form>
 
-
+        <!-- Actions -->
         <div fxLayout="row" fxLayoutAlign="space-between center">
-            <a routerLink="/ingredients">All Ingredients ({{ allIngredient }})</a>
+            <a class="ingredients-info" routerLink="/ingredient/all">All Ingredients ({{ allIngredient }})</a>
             <button
                     mat-raised-button
-                    (click)="addIngredient()"
+                    (click)="addIngredient(form)"
                     [disabled]="invalidForm()"
                     type="submit"
-                    class="add-button" [disabled]="invalidForm()">Add Ingredient</button>
+                    class="add-button" [disabled]="invalidForm()">Add Ingredient
+            </button>
         </div>
-    </div>
-    <div class="right-section">
-
     </div>
 </div>

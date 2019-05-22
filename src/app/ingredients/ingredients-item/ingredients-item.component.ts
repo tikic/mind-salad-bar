@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Ingredient, Tag} from '../ingredient.model';
 import {IngredientsService} from '../ingredients.service';
-import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-ingredients-item',
@@ -11,10 +10,9 @@ import {Router} from '@angular/router';
 })
 export class IngredientsItemComponent implements OnInit {
 
-    // Ingredient
+    // Ingredient Data
     ingredient: Ingredient = {
         name: '',
-        calories: null,
         imagePath: '',
         tags: []
     };
@@ -29,8 +27,7 @@ export class IngredientsItemComponent implements OnInit {
 
     readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-    constructor(private ingredientsService: IngredientsService,
-                private router: Router) {
+    constructor(private ingredientsService: IngredientsService) {
     }
 
     ngOnInit() {
@@ -41,12 +38,12 @@ export class IngredientsItemComponent implements OnInit {
         const input = event.input;
         const value = event.value;
 
-    // Add our fruit
+        // Add our fruit
         if ((value || '').trim()) {
             this.ingredient.tags.push({name: value.trim()});
         }
 
-    // Reset the input value
+        // Reset the input value
         if (input) {
             input.value = '';
         }
@@ -63,16 +60,16 @@ export class IngredientsItemComponent implements OnInit {
     invalidForm(): boolean {
         return !this.ingredient.name ||
             !this.ingredient.calories ||
-            !this.ingredient.tags.length > 0;
+            this.ingredient.tags.length === 0;
     }
 
-    reset() {
-        this.ingredient = {};
-        this.allIngredient++;
-    }
-
-    addIngredient() {
-        this.ingredient.imagePath = null;
-        this.ingredientsService.addIngredient(this.ingredient).subscribe(() => this.reset());
+    addIngredient(form) {
+        if (!this.ingredient.imagePath) {
+            this.ingredient.imagePath = null;
+        }
+        this.ingredientsService.addIngredient(this.ingredient).subscribe(() => {
+            this.allIngredient++;
+            form.reset();
+        });
     }
 }

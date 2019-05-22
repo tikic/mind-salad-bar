@@ -1,15 +1,22 @@
+@import '../../../stylesheets/variables';
+
 :host{
+  .add-ingredient {
+    background-image: url('../../../assets/images/salad.png');
+  }
+  .step-img{
+    width: 70%;
+  }
   .title{
     font-size: 50px;
-    color: black;
+    color: $mind-text;
   }
-  .left-section{
-    width: 500px;
+  .ingredients-info {
+    color: $mind-primary-color;
+  }
+  .main-section{
+    padding: 40px;
 
-    .input-fields {
-      width: 100%;
-      padding: 20px;
-    }
     .name-field{
       width: 60%;
     }
@@ -20,5 +27,14 @@
     .input-field{
       width: 100%;
     }
+  }
+  .add-button{
+    background-color: $mind-primary-color;
+    color: white;
+  }
+
+  .add-button[disabled]{
+    background-color: $mind-black-12;
+    color: $mind-black-3;
   }
 }
