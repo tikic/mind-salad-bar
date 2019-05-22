@@ -1,3 +1,5 @@
+https://www.loom.com/share/3d34898649834db1a9d8efffe723617c
+
 # MindSaladBar
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
