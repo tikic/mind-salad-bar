@@ -1,5 +1,30 @@
+@import '../../../stylesheets/variables';
+
 :host{
-  .ingredient-input, .ingredient-tags{
-    width: 100%;
+  .title{
+    font-size: 50px;
+    color: $mind-text;
+  }
+  .back-icon{
+    background:$mind-primary-color;
+    color: white;
+    box-shadow: none;
+  }
+  .right-section{
+    padding: 40px;
+    .input-fields {
+      width: 100%;
+      padding: 20px;
+    }
+    .name-field{
+      width: 60%;
+    }
+    .cal-field{
+      width: 30%;
+      margin-left: auto;
+    }
+    .input-field{
+      width: 100%;
+    }
   }
 }

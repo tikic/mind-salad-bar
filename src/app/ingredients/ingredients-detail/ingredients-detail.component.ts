@@ -57,14 +57,16 @@ export class IngredientsDetailComponent implements OnInit {
     }
 
     invalidForm(): boolean {
-        return !this.ingredient.name;
+        return !this.ingredient.name ||
+            !this.ingredient.calories ||
+            this.ingredient.tags.length === 0;
     }
 
     deleteIngredientData() {
-        this.ingredientsService.deleteIngredientData(this.ingredient.id).subscribe( () => this.router.navigate(['/ingredients']));
+        this.ingredientsService.deleteIngredientData(this.ingredient.id).subscribe( () => this.router.navigate(['/ingredient/all']));
     }
 
     changeIngredientData() {
-        this.ingredientsService.setIngredientData(this.ingredient).subscribe( () => this.router.navigate(['/ingredients']) );
+        this.ingredientsService.setIngredientData(this.ingredient).subscribe( () => this.router.navigate(['/ingredient/all']) );
     }
 }

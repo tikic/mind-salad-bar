@@ -1,6 +1,13 @@
+@import '../stylesheets/variables';
+
 .mat-toolbar{
-  background: #fff;
+  background: transparent;
 }
 .mat-icon{
   fill: #5f6368;
+}
+
+.mat-chip.mat-standard-chip{
+  background-color: $mind-primary-color;
+  color: white;
 }

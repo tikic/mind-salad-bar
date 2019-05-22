@@ -1,24 +1,40 @@
-<div class="add-ingredient" fxLayout="row">
+<div class="edit-ingredient" fxLayout="row">
 
-    <div fxLayout="column" fxLayoutAlign="space-around">
-        <form class="add-ingredient-form">
+    <!-- Return -->
+    <button mat-mini-fab class="back-icon" routerLink="/ingredient/all">
+        <mat-icon aria-label="icon-button">keyboard_backspace</mat-icon>
+    </button>
 
-            <div class="first-row" fxLayout="row">
-                <mat-form-field class="ingredient-input">
+    <!--Ingredient Image-->
+    <div class="left-section" fxLayout="column" fxFlex="50%" fxLayoutAlign="center center">
+        <img [src]="ingredient.imagePath" alt="ingedient image">
+    </div>
+
+    <div class="right-section" fxLayout="column" fxFlex="50%">
+        <h3 class="title">Edit Ingredient</h3>
+
+        <!-- Edit form -->
+        <form class="edit-ingredient-form">
+
+            <!-- Name and calories -->
+            <div class="first-row" fxLayout class="input-field">
+                <mat-form-field class="name-field">
                     <input type="text" matInput placeholder="Name" [(ngModel)]="ingredient.name" name="name" required>
                 </mat-form-field>
 
-                <mat-form-field class="ingredient-input">
+                <mat-form-field class="cal-field">
                     <input type="number" matInput placeholder="Calories" [(ngModel)]="ingredient.calories"
                            name="calories" required>
                 </mat-form-field>
             </div>
 
-            <mat-form-field class="ingredient-input">
+            <!-- imagePath -->
+            <mat-form-field class="input-field">
                 <input type="url" matInput placeholder="Image URL" [(ngModel)]="ingredient.imagePath" name="imagePath">
             </mat-form-field>
 
-            <mat-form-field class="ingredient-tags">
+            <!-- Tags -->
+            <mat-form-field class="input-field">
                 <mat-chip-list #chipList>
                     <mat-chip *ngFor="let tag of ingredient.tags" [selectable]="selectable"
                               [removable]="removable" (removed)="removeTag(tag)">
@@ -34,19 +50,20 @@
             </mat-form-field>
         </form>
 
-
-        <div class="fotter" fxLayout="row" fxLayoutAlign="space-between center">
+        <!-- Actions -->
+        <div fxLayout="row" fxLayoutAlign="space-between center">
             <button
                     mat-raised-button
                     (click)="deleteIngredientData()"
                     type="submit"
-                    class="add-button">Delete Ingredient</button>
+                    class="delete-button">Delete Ingredient
+            </button>
             <button
                     mat-raised-button
                     (click)="changeIngredientData()"
                     type="submit"
-                    class="add-button" [disabled]="invalidForm()">Update Ingredient</button>
+                    class="update-button" [disabled]="invalidForm()">Update Ingredient
+            </button>
         </div>
-
     </div>
 </div>
