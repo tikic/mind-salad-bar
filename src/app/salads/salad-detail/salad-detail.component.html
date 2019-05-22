@@ -1,3 +1,6 @@
-<p>
-  salad-detail works!
-</p>
+<div class="salad-details" fxLayout="column" fxLayoutAlign="center center">
+
+    <h3 class="title">{{ salad.name }}</h3>
+    <span *ngFor="let ingredient of salad.ingredients">{{ ingredient.name }}</span>
+
+</div>

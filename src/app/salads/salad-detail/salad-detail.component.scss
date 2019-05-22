@@ -1,0 +1,12 @@
+@import '../../../stylesheets/variables';
+
+:host{
+  .salad-details {
+    background-image: url('../../../assets/images/salad-details.png');
+    text-align: center;
+  }
+  .title{
+    font-size: 50px;
+    color: $mind-text;
+  }
+}
