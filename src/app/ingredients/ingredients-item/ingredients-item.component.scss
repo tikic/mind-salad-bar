@@ -7,10 +7,6 @@
   .step-img{
     width: 70%;
   }
-  .title{
-    font-size: 50px;
-    color: $mind-text;
-  }
   .ingredients-info {
     color: $mind-primary-color;
   }
@@ -27,14 +23,5 @@
     .input-field{
       width: 100%;
     }
-  }
-  .add-button{
-    background-color: $mind-primary-color;
-    color: white;
-  }
-
-  .add-button[disabled]{
-    background-color: $mind-black-12;
-    color: $mind-black-3;
   }
 }

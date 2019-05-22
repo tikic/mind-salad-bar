@@ -1,3 +1,4 @@
+@import "variables";
 @import '~@angular/material/theming';
 @include mat-core();
 
@@ -40,6 +41,50 @@ $my-app-warn: mat-palette($mat-deep-orange);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);
 
-@import 'variables';
+
 @import 'material';
 @import 'fonts';
+
+
+body {
+  background-image: url('../assets/images/background.jpeg');
+  background-size: cover;
+}
+
+.md-button {
+  background-color: $mind-primary-color;
+  color: white;
+  margin: 40px 0;
+}
+
+.md-button[disabled]{
+  background-color: $mind-black-12;
+  color: $mind-black-3;
+}
+
+.secondary-text {
+  font-size: 13px;
+  color: $mind-secondary-text;
+}
+.primary-text {
+  color: $mind-primary-text;
+}
+
+.title{
+  font-size: 50px;
+  color: $mind-text;
+}
+
+.md-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 20px;
+  object-fit: cover;
+}
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+  margin: 10px;
+  background-color: $mind-primary-color;
+  box-shadow: none;
+  color: white;
+}

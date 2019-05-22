@@ -1,12 +1,27 @@
 @import '../../../stylesheets/variables';
 
-:host{
+:host {
   .salad-details {
-    background-image: url('../../../assets/images/salad-details.png');
+    background: url('../../../assets/images/salads-view.png') no-repeat;
     text-align: center;
+    min-height: 650px;
+
+    .left-section {
+      padding: 10px 40px;
+    }
+    .right-section {
+      padding: 20px;
+    }
   }
-  .title{
-    font-size: 50px;
-    color: $mind-text;
+  .input-field {
+    width: 100%;
+  }
+
+  .list-item {
+    width: 100%;
+    height: 100px;
+  }
+  .calories {
+    margin-left: auto;
   }
 }

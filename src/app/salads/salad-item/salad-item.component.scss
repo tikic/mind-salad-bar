@@ -1,57 +1,24 @@
 @import '../../../stylesheets/variables';
 
 :host{
-  .input-field{
+  .input-field {
     width: 100%;
   }
-  .title{
-    font-size: 50px;
-    color: $mind-text;
+  .info{
+    padding: 10px;
   }
 
   .left-section{
-    padding: 40px;
+    padding: 10px 40px;
   }
   .right-section{
     padding: 20px;
   }
-
   .list-item {
     width: 100%;
     height: 100px;
   }
-
-  .md-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 20px;
-    object-fit: cover;
-  }
-  .sort-icon {
-    margin: 10px;
-    background-color: $mind-primary-color;
-    box-shadow: none;
-    color: white;
-  }
-  .secondary-text {
-    font-size: 13px;
-    color: $mind-secondary-text;
-  }
-  .primary-text {
-    color: $mind-primary-text;
-  }
   .calories {
     margin-left: auto;
-  }
-
-  .add-button {
-    background-color: $mind-primary-color;
-    color: white;
-    margin: 40px 0;
-  }
-  .add-button[disabled]{
-    background-color: $mind-black-12;
-    color: $mind-black-3;
   }
 }

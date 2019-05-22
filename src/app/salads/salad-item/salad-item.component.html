@@ -25,7 +25,7 @@
                     mat-raised-button
                     (click)="addSalad()"
                     type="submit"
-                    class="add-button" [disabled]="invalidForm()">Add Salad
+                    class="md-button" [disabled]="invalidForm()">Add Salad
             </button>
         </div>
     </div>
@@ -43,7 +43,7 @@
             <!-- Filter by calories -->
             <div class="filter-field" fxLayout="row" fxLayoutAlign="flex-end center">
                 <span>Sort By Calories </span>
-                <button mat-mini-fab (click)="ascSort = !ascSort" class="sort-icon">
+                <button mat-mini-fab (click)="ascSort = !ascSort" class="md-icon">
                     <mat-icon aria-label="Example icon-button with a heart icon">import_export</mat-icon>
                 </button>
             </div>

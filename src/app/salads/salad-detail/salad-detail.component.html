@@ -1,6 +1,39 @@
-<div class="salad-details" fxLayout="column" fxLayoutAlign="center center">
+<div class="salad-details">
 
-    <h3 class="title">{{ salad.name }}</h3>
-    <span *ngFor="let ingredient of salad.ingredients">{{ ingredient.name }}</span>
+    <!-- Return button -->
+    <button mat-mini-fab class="md-icon" routerLink="/salad/all">
+        <mat-icon aria-label="icon-button">keyboard_backspace</mat-icon>
+    </button>
 
+        <div class="left-section" fxLayout="column" fxFlex="55%">
+
+            <div class="info" fxLayout="row" fxLayoutAlign="space-between center">
+                <h3 class="title">{{ salad.name }}</h3>
+                <span>Total: {{ salad.calories }}</span>
+            </div>
+
+            <!-- List of ingredients -->
+            <mat-list role="list">
+                <mat-list-item role="listitem" class="list-item"
+                               *ngFor="let ingredient of salad.ingredients| searchData: {name: searchText} | sort: 'calories': ascSort" fxLayout="column"
+                               fxLayoutAlign="space-between">
+
+                    <!-- Image badge -->
+                    <img [src]="ingredient.imagePath ? ingredient.imagePath : '../../../assets/images/no_image.jpg'"
+                         class="md-avatar" alt="img"/>
+
+                    <!-- Name and calories -->
+                    <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="30%">
+                        <span class="primary-text">{{ ingredient.name }}</span>
+                        <span class="secondary-text"> Tags:
+                        <span *ngFor="let tag of ingredient.tags">{{ tag.name }}</span></span>
+                    </div>
+
+                    <!-- Calories -->
+                    <span class="calories"> {{ ingredient.calories }}</span>
+
+                </mat-list-item>
+            </mat-list>
+
+        </div>
 </div>

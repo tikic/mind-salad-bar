@@ -1,16 +1,51 @@
 @import '/../stylesheets/variables';
 
 :host {
-  .logo{
+  .main-content {
+    margin: auto;
+  }
+  .logo {
     font-size: 30px;
     text-transform: uppercase;
     color: $mind-primary-color;
   }
-  .dev-info{
-    margin-left: auto;
-  }
-  .card{
+  .card {
     width: 1024px;
-    margin:auto;
+    min-height: 650px;
+    border-radius: 20px;
+}
+  .nav-items {
+    list-style-type: none;
+  }
+
+  li.active {
+    background: rgba(50, 50, 50, 0.35);
+    margin: -10px;
+  }
+  li {
+    background: rgba(50, 50, 50, 0.2);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    a {
+      padding: 15px 5px;
+    }
+  }
+  .nav-item {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 25px;
+    color: white;
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    -webkit-transform: scale(-1, -1);
+    -ms-transform: scale(-1, -1);
+    transform: scale(-1, -1);
+    text-decoration: none;
+    margin: 5px 10px;
   }
 }
+
+

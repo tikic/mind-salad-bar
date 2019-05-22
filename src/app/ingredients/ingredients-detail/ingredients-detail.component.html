@@ -1,16 +1,16 @@
 <div class="edit-ingredient" fxLayout="row">
 
     <!-- Return -->
-    <button mat-mini-fab class="back-icon" routerLink="/ingredient/all">
+    <button mat-mini-fab class="md-icon" routerLink="/ingredient/all">
         <mat-icon aria-label="icon-button">keyboard_backspace</mat-icon>
     </button>
 
     <!--Ingredient Image-->
     <div class="left-section" fxLayout="column" fxFlex="50%" fxLayoutAlign="center center">
-        <img [src]="ingredient.imagePath" alt="ingedient image">
+        <img [src]="ingredient.imagePath" alt="Ingredient image">
     </div>
 
-    <div class="right-section" fxLayout="column" fxFlex="50%">
+    <div class="right-section" fxLayout="column" fxFlex="50%" fxLayoutAlign="space-between">
         <h3 class="title">Edit Ingredient</h3>
 
         <!-- Edit form -->
@@ -56,13 +56,13 @@
                     mat-raised-button
                     (click)="deleteIngredientData()"
                     type="submit"
-                    class="delete-button">Delete Ingredient
+                    class="md-button">Delete Ingredient
             </button>
             <button
                     mat-raised-button
                     (click)="changeIngredientData()"
                     type="submit"
-                    class="update-button" [disabled]="invalidForm()">Update Ingredient
+                    class="md-button" [disabled]="invalidForm()">Update Ingredient
             </button>
         </div>
     </div>

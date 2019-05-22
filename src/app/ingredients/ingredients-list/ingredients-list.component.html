@@ -17,7 +17,7 @@
             <!-- Filter by calories -->
             <div class="filter-field" fxLayout="row" fxLayoutAlign="flex-end center">
                 <span>Sort By Calories </span>
-                <button mat-mini-fab (click)="ascSort = !ascSort" class="sort-icon">
+                <button mat-mini-fab (click)="ascSort = !ascSort" class="md-icon">
                     <mat-icon aria-label="icon-button">import_export</mat-icon>
                 </button>
             </div>
@@ -55,13 +55,13 @@
         </mat-list>
 
         <!--Actions-->
-        <button mat-button (click)="makeSalad()" class="add-button" [disabled]="invalidForm()">Make Salad</button>
+        <button mat-button (click)="makeSalad()" class="md-button" [disabled]="invalidForm()">Make Salad</button>
 
     </div>
 
     <!-- Step Info -->
     <div class="right-section">
-        <img src="../../../assets/images/spep-2.png" alt="">
+        <img src="../../../assets/images/step-2.png" alt="">
         <h3 class="title">Choose Ingredients</h3>
     </div>
 </div>

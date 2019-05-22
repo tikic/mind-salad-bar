@@ -69,6 +69,7 @@ export class IngredientsItemComponent implements OnInit {
         }
         this.ingredientsService.addIngredient(this.ingredient).subscribe(() => {
             this.allIngredient++;
+            this.ingredient.tags = [];
             form.reset();
         });
     }

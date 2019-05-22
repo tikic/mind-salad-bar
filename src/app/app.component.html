@@ -1,16 +1,16 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
     <span class="logo">Mind Salad Bar</span>
-    <span class="dev-info">Task - Holycode</span>
 </mat-toolbar>
 
-<div class="main-content" fxLayout="row">
+<div class="main-content" fxLayout="row" fxLayoutAlign="center start">
+
     <div class="nav" fxLayout="row">
         <ul class="nav-items">
-            <li><a class="nav-item" routerLink="/ingredient" routerLinkActive="active">
+            <li  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a class="nav-item" routerLink="/ingredient" >
                 Add ingredient</a></li>
-            <li><a class="nav-item" routerLink="ingredient/all" routerLinkActive="active">Ingredients</a></li>
-            <li><a class="nav-item" routerLink="/salad" routerLinkActive="active">Salad Maker</a></li>
-            <li><a class="nav-item" routerLink="/salad/all" routerLinkActive="active">Salads Preview</a></li>
+            <li  routerLinkActive="active"><a class="nav-item" routerLink="ingredient/all" >Ingredients</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a class="nav-item" routerLink="/salad" >Salad Maker</a></li>
+            <li routerLinkActive="active"><a class="nav-item" routerLink="/salad/all" >Salads Preview</a></li>
         </ul>
     </div>
     <mat-card class="card">

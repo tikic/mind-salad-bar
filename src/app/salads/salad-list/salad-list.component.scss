@@ -2,12 +2,25 @@
 
 :host {
   .salads {
-    background-image: url('../../../assets/images/salad-list.png');
-    height: 600px;
+    background: url('../../../assets/images/salads-view.png') no-repeat;
+    min-height: 650px;
 
+    .title {
+      font-size: 50px;
+      color: $mind-text;
+      padding-left: 20px;
+    }
+
+    .salad-icon{
+      width: 50px;
+      opacity: 0.2;
+    }
+    .badge{
+      margin-left: auto;
+    }
     .salad-card {
-      width: 250px;
-      height: 200px;
+      width: 235px;
+      height: 240px;
       margin: 10px;
     }
     .badge {
@@ -22,6 +35,7 @@
     }
     .delete {
       cursor: pointer;
+      opacity: 0.4;
     }
     .card-actions {
       color: $mind-text;

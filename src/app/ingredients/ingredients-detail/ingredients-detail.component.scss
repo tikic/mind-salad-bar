@@ -1,30 +1,25 @@
 @import '../../../stylesheets/variables';
 
-:host{
-  .title{
-    font-size: 50px;
-    color: $mind-text;
+:host {
+  .edit-ingredient {
+    min-height: 650px;
   }
-  .back-icon{
-    background:$mind-primary-color;
-    color: white;
-    box-shadow: none;
-  }
-  .right-section{
+  .right-section {
     padding: 40px;
     .input-fields {
       width: 100%;
       padding: 20px;
     }
-    .name-field{
+    .name-field {
       width: 60%;
     }
-    .cal-field{
+    .cal-field {
       width: 30%;
       margin-left: auto;
     }
-    .input-field{
+    .input-field {
       width: 100%;
     }
   }
+
 }
