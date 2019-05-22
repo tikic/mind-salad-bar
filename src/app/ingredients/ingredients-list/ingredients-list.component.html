@@ -1,14 +1,16 @@
-<div class="ingredients-list">
-        <h3 class="title">Ingredients</h3>
+<div class="ingredients-list" fxLayout>
 
-        <div class="header" fxLayout="row" fxLayoutAlign="flex-start center">
+    <div class="left-section">
 
-             <!-- Filter by tag  -->
+        <div class="filters" fxLayout="row" fxLayoutAlign="center center">
+
+            <!-- Filter by tag  -->
             <div class="tag" fxLayout="row" fxLayoutAlign="center center">
                 <span class="filter-text">Selected tag: </span>
                 <mat-chip-list>
                     <mat-chip *ngIf="selectedTag">{{ selectedTag }}
-                        <mat-icon matChipRemove (click)="remove()">cancel</mat-icon></mat-chip>
+                        <mat-icon matChipRemove (click)="removeTag()">cancel</mat-icon>
+                    </mat-chip>
                 </mat-chip-list>
             </div>
 
@@ -16,7 +18,7 @@
             <div class="filter-field" fxLayout="row" fxLayoutAlign="flex-end center">
                 <span>Sort By Calories </span>
                 <button mat-mini-fab (click)="ascSort = !ascSort" class="sort-icon">
-                    <mat-icon aria-label="Example icon-button with a heart icon">import_export</mat-icon>
+                    <mat-icon aria-label="icon-button">import_export</mat-icon>
                 </button>
             </div>
 
@@ -29,6 +31,9 @@
                            *ngFor="let ingredient of ingredients| sort: 'calories': ascSort" fxLayout="column"
                            fxLayoutAlign="space-between">
 
+                <!-- Checkbox -->
+                <mat-checkbox [(ngModel)]="ingredient.checked" (change)="addTolist(ingredient, $event)"></mat-checkbox>
+
                 <!-- Image badge -->
                 <img [src]="ingredient.imagePath ? ingredient.imagePath : '../../../assets/images/no_image.jpg'"
                      class="md-avatar" alt="img"/>
@@ -40,7 +45,8 @@
                 </div>
 
                 <!-- Tags -->
-                <span class="tags" *ngFor="let tag of ingredient.tags" (click)="filterTag(tag.name)"> {{ tag.name }} </span>
+                <span class="tags" *ngFor="let tag of ingredient.tags"
+                      (click)="filterTag(tag.name)"> {{ tag.name }} </span>
 
                 <!-- Edit icon -->
                 <mat-icon [routerLink]="['/ingredient', ingredient.id]" class="edit-icon">edit</mat-icon>
@@ -48,5 +54,14 @@
             </mat-list-item>
         </mat-list>
 
-        <button mat-button (click)="makeSalad()">Make Salad</button>
+        <!--Actions-->
+        <button mat-button (click)="makeSalad()" class="add-button" [disabled]="invalidForm()">Make Salad</button>
+
+    </div>
+
+    <!-- Step Info -->
+    <div class="right-section">
+        <img src="../../../assets/images/spep-2.png" alt="">
+        <h3 class="title">Choose Ingredients</h3>
+    </div>
 </div>

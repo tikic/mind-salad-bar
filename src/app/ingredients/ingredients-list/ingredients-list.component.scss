@@ -1,49 +1,68 @@
 @import '../../../stylesheets/variables';
 
-:host{
-  .list-item{
-    padding: 50px 20px;
-    width:100%;
-  }
-  .header{
-    padding: 10px 40px;
-    .title{
-      font-size: 22px;
-  }
-    .filter-field{
-      margin-left: auto;
-    }
-    .filter-text{
-      margin-right: 15px;
-    }
-  }
+:host {
+  .ingredients-list {
+    background-image: url('../../../assets/images/ingredients-list.png');
+    text-align: center;
 
-  .md-avatar{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    padding: 20px;
-  }
-  .edit-icon{
-    margin-left: auto;
-    cursor: pointer;
+    .title {
+      font-size: 50px;
+      color: $mind-text;
+    }
 
-  }
-  .sort-icon{
-    margin: 10px;
-    background-color: #e0e0e0;
-    box-shadow: none;
-  }
-  .secondary-text{
-    font-size: 13px;
-    color: $mind-secondary-text;
-  }
-  .primary-text{
-    color: $mind-primary-text;
-  }
-  .tags{
-    cursor:pointer;
-    margin: 2px 5px;
-    text-decoration: underline dotted gray;
+    .left-section {
+      width: 65%;
+
+      .list-item {
+        width: 100%;
+        height: 100px;
+
+        .secondary-text {
+          font-size: 13px;
+          color: $mind-secondary-text;
+        }
+        .primary-text {
+          color: $mind-primary-text;
+        }
+        .tags {
+          cursor: pointer;
+          margin: 2px 5px;
+          border-bottom: 4px dotted grey;
+        }
+
+        .md-avatar {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          margin: 0 20px;
+          object-fit: cover;
+        }
+        .edit-icon {
+          margin-left: auto;
+          cursor: pointer;
+
+        }
+      }
+    }
+
+    .filters {
+      padding-left:30px;
+      .title {
+        font-size: 22px;
+      }
+      .filter-field {
+        margin-left: auto;
+      }
+      .filter-text {
+        margin-right: 15px;
+      }
+    }
+
+    .sort-icon {
+      margin: 10px;
+      background-color: $mind-primary-color;
+      box-shadow: none;
+      color: white;
+    }
   }
 }

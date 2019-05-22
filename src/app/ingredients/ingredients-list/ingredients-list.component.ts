@@ -15,12 +15,16 @@ export class IngredientsListComponent implements OnInit {
     // Ingredients Data
     ingredients: Ingredient[];
 
-    // Sort
+    // Ingredients Checked List
+    ingredientsList = [];
+
+    // Sorting order
     ascSort: boolean;
 
-    sortData: any;
+    // Sort Ingredients
+    sortData: Ingredient[];
 
-    //
+    // Tag selected
     selectedTag: string;
 
     // ***** Lifecycle ***** //
@@ -34,22 +38,46 @@ export class IngredientsListComponent implements OnInit {
         this.ingredientsService.fetchIngredientsData().subscribe((res) => {
             this.ingredients = res;
             this.sortData = this.ingredients;
+            this.storeData();
         });
     }
 
-    remove() {
+    storeData() {
+        this.saladService.storeIngredients(this.ingredients);
+    }
+
+    addTolist(data) {
+        const updateItem = this.ingredientsList.find(this.findIndexToUpdate, data.id);
+        const index = this.ingredientsList.indexOf(updateItem);
+        data.checked = true;
+
+        if (index > -1) {
+            this.ingredientsList.splice(index, 1);
+        } else {
+            this.ingredientsList.push(data);
+        }
+    }
+
+    findIndexToUpdate(obj) {
+        return obj.id === this;
+    }
+
+    invalidForm(): boolean {
+        return this.ingredientsList.length === 0;
+    }
+
+    removeTag() {
         this.ingredients = this.sortData;
         this.selectedTag = '';
     }
 
     filterTag(name) {
         this.selectedTag = name;
-        const sortData = this.sortData.filter((element) => element.tags.some((subElement) => subElement.name === name));
-        this.ingredients = sortData;
+        this.ingredients = this.sortData.filter((element) => element.tags.some((subElement) => subElement.name === name));
     }
 
     makeSalad() {
-        this.saladService.storeIngredients(this.ingredients);
+        this.saladService.storeIngredients(this.ingredientsList);
         this.router.navigate(['salad']);
     }
 }
